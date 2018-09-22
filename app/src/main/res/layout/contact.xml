@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="contact"
+            type="thiengo.com.br.qmessage.domain.Contact" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/item_margin"
+        android:layout_marginLeft="@dimen/item_margin"
+        android:layout_marginRight="@dimen/item_margin"
+        android:layout_marginStart="@dimen/item_margin"
+        android:layout_marginTop="@dimen/item_margin"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/item_background"
+        android:padding="10dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".ContactsActivity"
+        tools:showIn="@layout/activity_contacts">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="78dp"
+            android:layout_height="78dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:contentDescription="@{ contact.name }"
+            android:scaleType="centerCrop"
+            android:src='@{ String.format("android.resource://%s/%d", context.getPackageName(), contact.image) }'
+            app:riv_border_width="0dp"
+            app:riv_corner_radius="3dp"
+            app:riv_mutate_background="true"
+            app:riv_oval="false"
+            app:riv_tile_mode="clamp" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iv_profile"
+            android:layout_toRightOf="@+id/iv_profile"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingEnd="28dp"
+            android:paddingRight="28dp"
+            android:text="@{ contact.name }"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_last_answer_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_name"
+            android:layout_alignStart="@+id/tv_name"
+            android:layout_below="@+id/tv_name"
+            android:text="@string/last_answer_time_label"
+            android:textColor="#aaaaaa"
+            android:textSize="10sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/tv_last_answer_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_name"
+            android:layout_alignStart="@+id/tv_name"
+            android:layout_below="@+id/tv_last_answer_label"
+            android:text="@{ contact.lastMessage.lastTimeAnswerFormatted( context ) }"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/iv_last_answer"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignLeft="@+id/tv_name"
+            android:layout_alignStart="@+id/tv_name"
+            android:layout_below="@+id/tv_last_answer_time"
+            android:contentDescription="@string/ic_desc_right_arrow"
+            android:src="@drawable/ic_right_arrow"
+            android:tint="@color/colorLightGrey" />
+
+        <TextView
+            android:id="@+id/tv_last_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_last_answer"
+            android:layout_marginEnd="35dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginStart="1dp"
+            android:layout_toEndOf="@+id/iv_last_answer"
+            android:layout_toRightOf="@+id/iv_last_answer"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{ contact.lastMessage.lastMessageQuoted() }"
+            android:textColor="@color/colorGrey"
+            android:textSize="13sp"
+            android:textStyle="italic" />
+
+        <ImageView
+            android:id="@+id/iv_menu"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/ic_desc_context_menu"
+            android:src="@drawable/ic_menu"
+            android:tint="@color/colorLighterGrey" />
+
+        <TextView
+            android:id="@+id/tv_new_messages"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_new_message"
+            android:gravity="center_horizontal"
+            android:text="@{ String.valueOf( contact.newMessages ) }"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:visibility="@{ contact.newMessages > 0 ? View.VISIBLE : View.GONE }" />
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">QMessage</string>
+
+    <string name="action_search_contact">Buscar contato</string>
+    <string name="last_answer_time_label">Última resposta:</string>
+    <string name="ic_desc_context_menu">Ícone de menu de contexto</string>
+    <string name="ic_desc_right_arrow">Ícone de seta apontando para a última mensagem enviada</string>
+
+    <string name="a_time">à</string>
+    <string name="year">ano</string>
+    <string name="years">anos</string>
+    <string name="month">mês</string>
+    <string name="months">meses</string>
+    <string name="week">semana</string>
+    <string name="weeks">semanas</string>
+    <string name="day">dia</string>
+    <string name="days">dias</string>
+    <string name="hour">hora</string>
+    <string name="hours">horas</string>
+    <string name="minute">minuto</string>
+    <string name="minutes">minutos</string>
+    <string name="second">segundo</string>
+    <string name="seconds">segundos</string>
+</resources>
