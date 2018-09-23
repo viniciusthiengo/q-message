@@ -2,6 +2,9 @@ package thiengo.com.br.qmessage
 
 import android.app.Application
 import android.content.Intent
+import android.databinding.ObservableField
+import android.databinding.ObservableInt
+import android.databinding.ObservableLong
 import android.os.SystemClock
 import android.support.v4.content.LocalBroadcastManager
 import thiengo.com.br.qmessage.domain.Contact
@@ -32,22 +35,22 @@ class CustomApplication: Application() {
                  * novas mensagens não lidas.
                  * */
                 val contact = Contact(
-                    9856,
-                    0,
-                    "",
+                    ObservableInt(9856),
+                    ObservableInt(0),
+                    ObservableField(""),
                     LastMessage(
-                        System.currentTimeMillis(),
-                        "Eu vou também."
+                        ObservableLong(System.currentTimeMillis()),
+                        ObservableField("Eu vou também.")
                     ),
-                    2
+                    ObservableInt(2)
                 )
 
                 val intent = Intent( BroadcastNotification.FILTER )
                 intent.putExtra( BroadcastNotification.DATA, contact )
 
                 LocalBroadcastManager
-                    .getInstance( this )
-                    .sendBroadcast( intent )
+                        .getInstance( this )
+                        .sendBroadcast( intent )
             }
         }.start()
     }

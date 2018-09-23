@@ -51,8 +51,8 @@ class ContactsActivity : AppCompatActivity() {
         rv_contacts.layoutManager = layoutManager
 
         rv_contacts.adapter = ContactsAdapter(
-            this,
-            contacts
+                this,
+                contacts
         )
 
         runAdapterTime()
@@ -74,8 +74,8 @@ class ContactsActivity : AppCompatActivity() {
         val filter = IntentFilter( BroadcastNotification.FILTER )
 
         LocalBroadcastManager
-            .getInstance( this )
-            .registerReceiver( broadcast, filter )
+                .getInstance( this )
+                .registerReceiver( broadcast, filter )
     }
 
     override fun onDestroy() {
@@ -84,8 +84,8 @@ class ContactsActivity : AppCompatActivity() {
          * Liberação do BroadcastReceiver.
          * */
         LocalBroadcastManager
-            .getInstance( this )
-            .unregisterReceiver( broadcast )
+                .getInstance( this )
+                .unregisterReceiver( broadcast )
 
         /*
          * Desligando Thread de timer.
@@ -103,9 +103,7 @@ class ContactsActivity : AppCompatActivity() {
                 while( true ){
 
                     /*
-                     * Delay de 6 segundos, mas é seguro colocar
-                     * o mínimo de 1 minuto para evitar vazamnto
-                     * de memória.
+                     * Delay de 1 minuto.
                      * */
                     SystemClock.sleep(60 * 100)
 
@@ -131,11 +129,12 @@ class ContactsActivity : AppCompatActivity() {
     fun updateContactsList( contact: Contact ){
 
         val item = contacts.find {
-            it.id == contact.id
+            it.id.get() == contact.id.get()
         }
 
-        item!!.newMessages = contact.newMessages
-        item.lastMessage = contact.lastMessage
+        item!!.newMessages.set( contact.newMessages.get() )
+        item.lastMessage.time.set( contact.lastMessage.time.get() )
+        item.lastMessage.message.set( contact.lastMessage.message.get() )
 
         contacts.remove( item )
         contacts.add( 0, item )
@@ -143,6 +142,3 @@ class ContactsActivity : AppCompatActivity() {
         rv_contacts.adapter?.notifyDataSetChanged()
     }
 }
-
-
-
