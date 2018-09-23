@@ -8,9 +8,9 @@ import thiengo.com.br.qmessage.databinding.ContactBinding
 import thiengo.com.br.qmessage.domain.Contact
 
 class ContactsAdapter(
-        private val context: Context,
-        private val contacts: List<Contact> ) :
-        RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
+    private val context: Context,
+    private val contacts: List<Contact> ) :
+    RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
             parent: ViewGroup,

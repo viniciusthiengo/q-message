@@ -7,8 +7,10 @@
 
     <color name="colorNotification">#FF0000</color>
     <color name="colorContactBackground">#F0F0F0</color>
+
     <color name="colorDarkGrey">#666666</color>
-    <color name="colorLightGrey">#bbbbbb</color>
     <color name="colorGrey">#999999</color>
+    <color name="colorMediumGrey">#AAAAAA</color>
+    <color name="colorLightGrey">#BBBBBB</color>
     <color name="colorLighterGrey">#CCCCCC</color>
 </resources>

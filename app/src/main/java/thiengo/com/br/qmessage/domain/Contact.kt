@@ -9,7 +9,8 @@ class Contact(
         val name: String,
         var lastMessage: LastMessage,
         var newMessages: Int
-) : Parcelable {
+    ) : Parcelable {
+
     constructor(source: Parcel) : this(
             source.readInt(),
             source.readInt(),

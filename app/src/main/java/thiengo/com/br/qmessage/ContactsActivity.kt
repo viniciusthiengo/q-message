@@ -18,6 +18,7 @@ class ContactsActivity : AppCompatActivity() {
 
     lateinit var contacts: MutableList<Contact>
     lateinit var broadcast: BroadcastNotification
+    lateinit var thread: Thread
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +86,11 @@ class ContactsActivity : AppCompatActivity() {
         LocalBroadcastManager
             .getInstance( this )
             .unregisterReceiver( broadcast )
+
+        /*
+         * Desligando Thread de timer.
+         * */
+        thread.interrupt()
     }
 
     /*
@@ -92,12 +98,14 @@ class ContactsActivity : AppCompatActivity() {
      * mensagens enviadas para cada contato em lista.
      * */
     private fun runAdapterTime(){
-        Thread{
+        thread = Thread{
             kotlin.run {
-                while(true){
+                while( true ){
 
                     /*
-                     * Delay de 1 minuto.
+                     * Delay de 6 segundos, mas é seguro colocar
+                     * o mínimo de 1 minuto para evitar vazamnto
+                     * de memória.
                      * */
                     SystemClock.sleep(60 * 100)
 
@@ -111,7 +119,9 @@ class ContactsActivity : AppCompatActivity() {
                     }
                 }
             }
-        }.start()
+        }
+
+        thread.start()
     }
 
     /*
@@ -120,18 +130,19 @@ class ContactsActivity : AppCompatActivity() {
      * */
     fun updateContactsList( contact: Contact ){
 
-        for( i in 0..(contacts.size - 1) ){
-
-            if( contacts[i].id == contact.id ){
-
-                contacts[i].newMessages = contact.newMessages
-                contacts[i].lastMessage = contact.lastMessage
-
-                contacts.add( 0, contacts.removeAt(i) )
-
-                rv_contacts.adapter?.notifyDataSetChanged()
-                break
-            }
+        val item = contacts.find {
+            it.id == contact.id
         }
+
+        item!!.newMessages = contact.newMessages
+        item.lastMessage = contact.lastMessage
+
+        contacts.remove( item )
+        contacts.add( 0, item )
+
+        rv_contacts.adapter?.notifyDataSetChanged()
     }
 }
+
+
+

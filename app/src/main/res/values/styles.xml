@@ -1,20 +1,37 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!--
+        Estilo padrão, aplicado em todo o projeto.
+    -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@drawable/background</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--
+        Para que a barra de topo padrão não seja utilizada e
+        assim somente o AppBarLayout junto ao Toolbar possam ser
+        usados.
+    -->
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <!--
+        Para o correto enquadramento do AppBarLayout.
+    -->
+    <style
+        name="AppTheme.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+    <!--
+        Utilizado para a correta apresentação de menus de pop-up
+        em barra de topo.
+    -->
+    <style
+        name="AppTheme.PopupOverlay"
+        parent="ThemeOverlay.AppCompat.Light" />
 </resources>

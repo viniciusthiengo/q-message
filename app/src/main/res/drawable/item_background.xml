@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
+    <!--
+        Cor de background do componente visual.
+    -->
     <solid android:color="@color/colorContactBackground" />
 
+    <!--
+        Curvatura de borda do componente visual.
+    -->
     <corners android:radius="5dp" />
 
 </shape>
