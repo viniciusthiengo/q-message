@@ -34,7 +34,7 @@ A ordem indicada para estudo dos artigos é:
 
 ## Dúvidas e dicas
 
-Caso você tenha dúvidas ou dicas sobre os tipos observáveis da Data Binding API ou o projeto apresentado em artigo, então [entre em contato](https://www.thiengo.com.br/contato) ou deixe seu comentário no post que logo eu lhe respondo.
+Caso você tenha dúvidas ou dicas sobre os tipos observáveis da Data Binding API ou sobre o projeto apresentado em artigo, então [entre em contato](https://www.thiengo.com.br/contato) ou deixe seu comentário no post que logo eu lhe respondo.
 
 ## Meus livros 📚 e curso
 
